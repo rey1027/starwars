@@ -6,19 +6,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			favorites: [],
 			urlBase:"https://www.swapi.tech/api",
-
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -73,6 +60,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  let data = await response.json();
 				  setStore({ vehicles: [...store.vehicles, data.result] });
 				}
+			},
+			addToFavorites: (element) => {
+				let store = getStore();
+				setStore({favorites: [...store.favorites, element]});
+			},
+
+			setFavorites:(newFavorites) => {
+				setStore({favorites: newFavorites});
 			}
 		}
 	};
